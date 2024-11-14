@@ -1,6 +1,5 @@
 Class {
-	#name : 'MyTest',
-	#superclass : 'TestCase',
-	#category : 'Pangolin',
-	#package : 'Pangolin'
+	#name : #MyTest,
+	#superclass : #TestCase,
+	#category : 'Pangolin'
 }

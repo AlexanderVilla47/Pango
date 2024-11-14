@@ -1,26 +1,35 @@
 Class {
-	#name : 'JuegoPangolin',
-	#superclass : 'Object',
+	#name : #JuegoPangolin,
+	#superclass : #Object,
 	#instVars : [
 		'tablero',
 		'jugadores'
 	],
-	#category : 'Pangolin',
-	#package : 'Pangolin'
+	#category : #Pangolin
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 JuegoPangolin >> iniciarJuego [
     tablero openInWorld.
     tablero colocarJugador: (jugadores first) en: 1@1.
 
 ]
 
-{ #category : 'initialization' }
+{ #category : #initialization }
 JuegoPangolin >> initialize [
-    tablero := Tablero new.
+	 TableroMorph allInstances do: [:each | each delete].
+    tablero := TableroMorph new juego: self.  "Pasamos 'self' como referencia"
     jugadores := OrderedCollection new.
-    jugadores add: (Jugador new posicion: 1@1).
+    jugadores add: (JugadorMorph new posicion: 1@1).
     self iniciarJuego.
+]
 
+{ #category : #accessing }
+JuegoPangolin >> jugadores [
+    ^ jugadores
+]
+
+{ #category : #'as yet unclassified' }
+JuegoPangolin >> moverJugador: unJugador a: nuevaPosicion [
+    tablero moverJugador: unJugador a: nuevaPosicion.
 ]
